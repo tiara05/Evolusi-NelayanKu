@@ -93,6 +93,22 @@
                             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                           </div>
                         </div>
+                        <div class="mb-3 form-password-toggle">
+                          <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password">Konfirmasi Password<span> (min. 8 Karaketer)</span></label>
+                          </div>
+                          <div class="input-group input-group-merge">
+                            <input
+                              type="password"
+                              id="password2"
+                              name="password2"
+                              class="form-control"
+                              placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                              aria-describedby="password"
+                            />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                          </div>
+                        </div>
                         <div class="mb-2">
                           <label for="nameWithTitle" class="form-label">No Telepon</label>
                           <div class="input-group">

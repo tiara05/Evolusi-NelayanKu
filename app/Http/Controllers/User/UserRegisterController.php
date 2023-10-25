@@ -40,21 +40,26 @@ class UserRegisterController extends Controller
         if($user != null){
             return redirect('/registeruser')->with('success', 'Maaf Email Anda Sudah Terdaftar, Silahkan Login!');
         } else{
-            User::create([
-                'name'          => $request -> nama,
-                'password'      => Hash::make($request -> password),
-                'email'         => $request -> email,
-                'alamat'        => $request -> alamat,
-                'telepon'       => $request -> telepon,
-                'provinsi'      => $prov,
-                'kotakab'       => $kot,
-                'kecamatan'     => $kec,
-                'desa'          => $des,
-            ]);
-
-            $user = Auth::user();
-            $request->session()->put('user', $user);
-            return redirect('/loginuser')->with('success', 'Registrasi Berhasil');
+            if ($request -> password != $request -> password2){
+                return redirect('/registeruser')->with('success', 'Mohon Perbaiki Password Anda');
+            } else{
+                User::create([
+                    'name'          => $request -> nama,
+                    'password'      => Hash::make($request -> password),
+                    'email'         => $request -> email,
+                    'alamat'        => $request -> alamat,
+                    'telepon'       => $request -> telepon,
+                    'provinsi'      => $prov,
+                    'kotakab'       => $kot,
+                    'kecamatan'     => $kec,
+                    'desa'          => $des,
+                ]);
+    
+                $user = Auth::user();
+                $request->session()->put('user', $user);
+                return redirect('/loginuser')->with('success', 'Registrasi Berhasil');
+            }
+            
         }
            
     }
