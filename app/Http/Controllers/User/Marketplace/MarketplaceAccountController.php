@@ -40,7 +40,25 @@ class MarketplaceAccountController extends Controller
         }
     }
 
-    
+    public function update(Request $request)
+    {
+                $request->validate([
+                    'nama'          => 'required',
+                    'email'         => 'required',
+                    'telepon'       => 'required',
+                    'alamat'        => 'required',
+                    
+                ]);
+
+                $account->name          = $request->nama;
+                $account->alamat        = $request->alamat;
+                $account->telepon       = $request->telepon;
+                $account->email         = $request->email;
+                $account->save();
+
+                return redirect(route('account.index'));
+             
+    }
 
 
 }
