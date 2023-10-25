@@ -60,6 +60,11 @@
                 </div>
                 <!-- /Logo -->
                 <h4 class="mb-2">Welcome to NelayanKu! 👋</h4><br>
+                @if ($message = Session::get('success'))
+                            <div class="alert alert-danger alert-block" style="margin-top: 10px">   
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                 <form class="form form-horizontal mb-4" action="{{ route('proses_registeruser') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-2">
@@ -82,7 +87,6 @@
                               id="password"
                               name="password"
                               class="form-control"
-                              pattern=".{8,}"
                               placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                               aria-describedby="password"
                             />

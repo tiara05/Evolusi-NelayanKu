@@ -35,6 +35,11 @@ class UserRegisterController extends Controller
         $kec = District::where('code', $request->kecamatan)->value('name');
         $des = Village::where('code', $request->desa)->value('name');
 
+        $user    = User::where('email', $request->email)->first();
+
+        if($user != null){
+            return redirect('/registeruser')->with('success', 'Maaf Email Anda Sudah Terdaftar, Silahkan Login!');
+        } else{
             User::create([
                 'name'          => $request -> nama,
                 'password'      => Hash::make($request -> password),
@@ -50,5 +55,7 @@ class UserRegisterController extends Controller
             $user = Auth::user();
             $request->session()->put('user', $user);
             return redirect('/loginuser')->with('success', 'Registrasi Berhasil');
+        }
+           
     }
 }
